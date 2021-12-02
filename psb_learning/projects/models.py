@@ -72,6 +72,13 @@ class ProjectLink(models.Model):
         verbose_name="проект"
     )
 
+    def __str__(self) -> str:
+        return f"{self.name}"
+
+    class Meta:
+        verbose_name = "ссылка проекта"
+        verbose_name_plural = "ссылки проектов"
+
 
 class ProjectFile(models.Model):
     """Модель файла к проекту"""

@@ -24,3 +24,8 @@ class QuestionSerializer(serializers.ModelSerializer):
             "text",
             "options"
         ]
+
+
+class AnswerSerializer(serializers.Serializer):
+    question = serializers.IntegerField()
+    option = serializers.IntegerField()
