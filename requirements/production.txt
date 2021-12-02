@@ -4,4 +4,3 @@
 
 gunicorn
 sentry-sdk
-django-anymail[sendinblue]
