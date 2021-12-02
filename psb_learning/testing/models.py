@@ -39,7 +39,7 @@ class Question(models.Model):
         verbose_name_plural = "вопросы"
 
 
-class Answer(models.Model):
+class Option(models.Model):
     """Модель варианта ответа на вопрос в викторине"""
 
     text = models.CharField(
@@ -50,7 +50,7 @@ class Answer(models.Model):
     question = models.ForeignKey(
         to=Question,
         on_delete=models.CASCADE,
-        related_name="answers",
+        related_name="options",
         verbose_name="вопрос"
     )
 

@@ -1,11 +1,11 @@
 from rest_framework import serializers
 
-from psb_learning.testing.models import Answer, Question, Quizz
+from psb_learning.testing.models import Option, Question, Quizz
 
 
-class AnswerSerializer(serializers.ModelSerializer):
+class OptionSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Answer
+        model = Option
         fields = [
             "id",
             "text"
@@ -13,7 +13,7 @@ class AnswerSerializer(serializers.ModelSerializer):
 
 
 class QuestionSerializer(serializers.ModelSerializer):
-    answers = AnswerSerializer(
+    options = OptionSerializer(
         many=True, read_only=True
     )
 
@@ -22,5 +22,5 @@ class QuestionSerializer(serializers.ModelSerializer):
         fields = [
             "id",
             "text",
-            "answers"
+            "options"
         ]
