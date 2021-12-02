@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from psb_learning.testing.models import Option, Question, Quizz
+from psb_learning.testing.models import Option, Question
 
 
 class OptionSerializer(serializers.ModelSerializer):

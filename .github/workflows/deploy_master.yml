@@ -1,4 +1,4 @@
-name: Run checks and deploy
+name: Deploy
 on:
   push:
     branches:
