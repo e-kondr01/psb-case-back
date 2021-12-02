@@ -31,10 +31,10 @@ class AnswerView(views.APIView):
             correct = False
 
         next_question = None
-        if Option.objects.filter(pk=serializer.validated_data["option"]+1):
-            possible_next_option = Option.objects.filter(pk=serializer.validated_data["option"]+1)[0]
-            if possible_next_option.question == question:
-                next_question = possible_next_option.pk
+        if Question.objects.filter(pk=serializer.validated_data["question"]+1):
+            possible_next_question = Question.objects.filter(pk=serializer.validated_data["question"]+1)[0]
+            if possible_next_question.quizz == question.quizz:
+                next_question = possible_next_question.pk
 
         resp = {
             "correct": correct,
