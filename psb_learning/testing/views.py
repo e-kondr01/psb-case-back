@@ -13,9 +13,10 @@ class QuestionDetailView(generics.RetrieveAPIView):
 
 class AnswerView(views.APIView):
     permission_classes = [permissions.IsAuthenticated]
+    serializer_class = AnswerSerializer
 
     def post(self, request, *args, **kwargs):
-        serializer = AnswerSerializer(data=request.data)
+        serializer = self.serializer_class(data=request.data)
         serializer.is_valid(raise_exception=True)
 
         question = get_object_or_404(Question, pk=serializer.validated_data["question"])
