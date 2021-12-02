@@ -14,7 +14,7 @@ class AnswerSerializer(serializers.ModelSerializer):
 
 class QuestionSerializer(serializers.ModelSerializer):
     answers = AnswerSerializer(
-        many=True, queryset=Answer.objects.all()
+        many=True, read_only=True
     )
 
     class Meta:
