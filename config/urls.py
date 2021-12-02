@@ -12,7 +12,7 @@ from psb_learning.users.views import CurrentUserView
 
 urlpatterns = [
     path(settings.ADMIN_URL, admin.site.urls),
-    path("api/auth/users/me", CurrentUserView.as_view()),
+    path("api/auth/users/me/", CurrentUserView.as_view()),
     path("api/auth/", include('djoser.urls')),
     path("api/auth/", include('djoser.urls.jwt')),
     path("api/testing", include("psb_learning.testing.urls")),
