@@ -51,3 +51,10 @@ class User(AbstractUser):
     )
 
     objects = UserManager()
+
+    def group(self) -> str:
+        """Возвращает имя первой группы пользователя"""
+        if self.groups.first():
+            return self.groups.first().name
+        else:
+            return ""

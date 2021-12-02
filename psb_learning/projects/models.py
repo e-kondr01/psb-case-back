@@ -16,6 +16,7 @@ class Project(models.Model):
 
     project_type = models.CharField(
         max_length=512,
+        blank=True,
         verbose_name="тип проекта"
     )
 
