@@ -1,6 +1,16 @@
 from rest_framework import serializers
 
-from .models import Project, ProjectFile, ProjectMember
+from .models import Project, ProjectFile, ProjectLink, ProjectMember
+
+
+class ProjectLinkSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ProjectLink
+        fields = [
+            "id",
+            "name",
+            "link"
+        ]
 
 
 class ProjectMemberSerializer(serializers.ModelSerializer):
@@ -33,6 +43,10 @@ class ProjectSerializer(serializers.ModelSerializer):
         many=True, read_only=True
     )
 
+    links = ProjectLinkSerializer(
+        many=True, read_only=True
+    )
+
     class Meta:
         model = Project
         fields = [
@@ -44,10 +58,8 @@ class ProjectSerializer(serializers.ModelSerializer):
             "stages",
             "results",
             "technologies",
-            "organisation_links",
-            "communication_links",
-            "documentation_links",
-            "design_links",
+            "links",
             "members",
+            "more_info"
             "files"
         ]

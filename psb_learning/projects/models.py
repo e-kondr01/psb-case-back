@@ -40,24 +40,9 @@ class Project(models.Model):
         verbose_name="стек технологий"
     )
 
-    organisation_links = models.TextField(
+    more_info = models.TextField(
         blank=True,
-        verbose_name="ссылки на ресурсы организации"
-    )
-
-    communication_links = models.TextField(
-        blank=True,
-        verbose_name="ссылки на ресурсы коммуникации"
-    )
-
-    documentation_links = models.TextField(
-        blank=True,
-        verbose_name="ссылки на ресурсы документации"
-    )
-
-    design_links = models.TextField(
-        blank=True,
-        verbose_name="ссылки на ресурсы дизайна"
+        verbose_name="дополнительная информация"
     )
 
     def __str__(self) -> str:
@@ -66,6 +51,26 @@ class Project(models.Model):
     class Meta:
         verbose_name = "проект"
         verbose_name_plural = "проекты"
+
+
+class ProjectLink(models.Model):
+    """Модель ссылки на инструмент проекта"""
+
+    name = models.CharField(
+        max_length=512,
+        verbose_name="название"
+    )
+
+    link = models.URLField(
+        verbose_name="ссылка"
+    )
+
+    project = models.ForeignKey(
+        to=Project,
+        on_delete=models.CASCADE,
+        related_name="links",
+        verbose_name="проект"
+    )
 
 
 class ProjectFile(models.Model):
