@@ -279,3 +279,5 @@ psb_learning/media/
 
 # Certbot
 certbot/
+
+migrations/
