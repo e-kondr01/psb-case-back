@@ -1,8 +1,7 @@
 name: On push checks
-
 on:
   push:
-    branches-ignore:
+    branches:
       - master
 
 jobs:

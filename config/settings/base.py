@@ -84,7 +84,10 @@ THIRD_PARTY_APPS = [
     "drf_spectacular"
 ]
 
-LOCAL_APPS = []
+LOCAL_APPS = [
+    "psb_learning.projects",
+    "psb_learning.testing"
+]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
