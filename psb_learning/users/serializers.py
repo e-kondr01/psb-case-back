@@ -8,5 +8,6 @@ class ShortUserSerializer(serializers.ModelSerializer):
         fields = [
             "id",
             "email",
+            "rating",
             "group"
         ]

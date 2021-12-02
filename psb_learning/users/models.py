@@ -50,6 +50,11 @@ class User(AbstractUser):
         verbose_name="почта"
     )
 
+    rating = models.PositiveSmallIntegerField(
+        default=0,
+        verbose_name="рейтинг"
+    )
+
     objects = UserManager()
 
     def group(self) -> str:

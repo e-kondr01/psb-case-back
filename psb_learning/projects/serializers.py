@@ -60,6 +60,6 @@ class ProjectSerializer(serializers.ModelSerializer):
             "technologies",
             "links",
             "members",
-            "more_info"
+            "more_info",
             "files"
         ]
