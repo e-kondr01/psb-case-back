@@ -1,6 +1,7 @@
 argon2-cffi
 whitenoise
 psycopg2-binary
+pillow
 
 # Django
 # ------------------------------------------------------------------------------
