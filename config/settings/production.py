@@ -1,4 +1,5 @@
 import logging
+from datetime import timedelta
 
 import sentry_sdk
 from sentry_sdk.integrations.django import DjangoIntegration
@@ -125,3 +126,12 @@ sentry_sdk.init(
 )
 
 ignore_logger("django.security.DisallowedHost")
+
+
+#  SimpleJWT
+
+SIMPLE_JWT = {
+    'ROTATE_REFRESH_TOKENS': True,
+    'ACCESS_TOKEN_LIFETIME': timedelta(days=365),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=366),
+}

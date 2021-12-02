@@ -10,6 +10,8 @@ from drf_spectacular.views import (
 
 urlpatterns = [
     path(settings.ADMIN_URL, admin.site.urls),
+    path("api/auth/", include('djoser.urls')),
+    path(r"api/auth/", include('djoser.urls.jwt')),
 ]
 
 urlpatterns += [
