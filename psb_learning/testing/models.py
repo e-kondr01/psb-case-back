@@ -50,6 +50,7 @@ class Answer(models.Model):
     question = models.ForeignKey(
         to=Question,
         on_delete=models.CASCADE,
+        related_name="answers",
         verbose_name="вопрос"
     )
 
