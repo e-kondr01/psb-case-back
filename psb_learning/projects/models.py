@@ -117,8 +117,8 @@ class ProjectMember(models.Model):
     )
 
     def __str__(self) -> str:
-        return f"{self.file}"
+        return f"{self.name}"
 
     class Meta:
-        verbose_name = "файл проекта"
-        verbose_name_plural = "файлы проектов"
+        verbose_name = "участник проекта"
+        verbose_name_plural = "участники проектов"
