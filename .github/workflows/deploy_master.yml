@@ -1,0 +1,45 @@
+name: Run checks and deploy
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  linters_and_tests:
+    name: run linters and tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout repo
+        uses: actions/checkout@v2
+      - name: setup docker-compose
+        uses: KengoTODA/actions-setup-docker-compose@main
+        with:
+          version: "1.26.2"
+      - name: build local
+        run: docker-compose -f local.yml up --build --detach
+      - name: wait for containers startup
+        run: sleep 10
+      - name: pylint
+        run: docker exec psb_learning_django bash -c "pylint psb_learning"
+      - name: pycodestyle
+        run: docker exec psb_learning_django bash -c "pycodestyle psb_learning"
+      - name: isort
+        run: docker exec psb_learning_django bash -c "isort psb_learning"
+      - name: run tests
+        run: docker exec psb_learning_django bash -c "python manage.py test --settings config.settings.test --parallel --failfast"
+
+  deploy-production:
+    needs: [linters_and_tests]
+    runs-on: ubuntu-latest
+    name: deploy on prod
+    steps:
+      - name: deploy production with ssh
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          script: |
+            git pull
+            docker-compose -f production.yml exec -T postgres backup
+            docker-compose -f production.yml up --detach --build --force-recreate
