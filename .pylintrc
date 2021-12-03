@@ -6,7 +6,7 @@ django-settings-module=config.settings.base
 max-line-length=120
 
 [MESSAGES CONTROL]
-disable=missing-docstring,no-else-return
+disable=missing-docstring,no-else-return,abstract-method
 
 [DESIGN]
 max-parents=13
