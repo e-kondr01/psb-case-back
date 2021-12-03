@@ -1,46 +1,22 @@
-## Local deploy
-./local.sh
+## Реализованная функциональность
+1. Retrieve и Update для информации по проекту
+2. Авторизация и разграничение ролей
+3. Прохождение викторины с начислением баллов пользователю за правильный ответ
+## Особенность проекта в следующем
+а в чём??м
+## Основной стек технологий
+Backend на Python Django Rest Framework, деплой с помощью Docker, Nginx, Gunicorn.
+Фронт на React.js
+## Демо
+Демо доступно по адресу: https://e-kondr01.ru
+Реквизиты тестового пользователя: email: worker@test.com, пароль: TESTtest123
+Реквизиты тестового руководителя: email: supervisor@test.com, пароль: TESTtest123
+## Запуск проекта
+Для запуска проекта нужно установить docker и docker-compose,
+после чего выполнить скрипт local.sh
 
-## Production deploy
-./deploy.sh
+Для применения миграций надо выполнить следующую команду:
 
-Добавить в Github HOST, USERNAME и PASSWORD для CI/CD.
-
-SSL:
-
-https://pentacent.medium.com/nginx-and-lets-encrypt-with-docker-in-less-than-5-minutes-b4b8a60d3a71
-
-Прописать следующие команды:
-
-`sudo chown -R 777:777 ./logs/gunicorn`
-
-`sudo chown -R 777:777 ./psb_learning/media`
-
-Т. к. это mounted папки, в которые хотят писать приложения внутри докера. Но они работают не от root, а от пользователя 777:777.
-
-## Линтеры
-
-Встроены в vscode, с помощью файла .vscode/settings.
-
-Через коммандную строку:
-
-`pylint psb_learning`
-
-`isort psb_learning`
-
-`pycodestyle psb_learning`
-
-## Тестирование
-
-`docker exec django bash -c "python manage.py test --settings config.settings.test --parallel --keepdb"`
-
-Test coverage: 
-
-`docker exec django bash -c "coverage run manage.py test --settings config.settings.test --keepdb && coverage html"`
-
-смотрим htmlcov/index.html
-
-
-## Postgres DB Backup:
-https://cookiecutter-django.readthedocs.io/en/latest/docker-postgres-backups.html
-
+`docker exec psb_learning_django bash -c "python manage.py migrate"`
+## Разработчики
+Егор Кондрашов, telegram: @e_kondr01

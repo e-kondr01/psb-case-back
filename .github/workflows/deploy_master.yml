@@ -18,5 +18,7 @@ jobs:
           script: |
             cd ~/psb-case-back
             git pull
+            cd ~/psb-case-back/PSB-case-2021
+            git pull
             docker-compose -f production.yml exec -T postgres backup
             docker-compose -f production.yml up --detach --build --force-recreate
