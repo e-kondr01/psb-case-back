@@ -63,3 +63,9 @@ class User(AbstractUser):
             return self.groups.first().name
         else:
             return ""
+
+    def increase_rating(self) -> None:
+        """Увеличивает рейтинг пользователя"""
+        RATING_INCREASE = 5
+        self.rating += RATING_INCREASE
+        self.save()

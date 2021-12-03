@@ -5,6 +5,8 @@ from rest_framework.response import Response
 from psb_learning.testing.models import Option, Question
 from psb_learning.testing.serializers import AnswerSerializer, QuestionSerializer
 
+from .utils import check_answer
+
 
 class QuestionDetailView(generics.RetrieveAPIView):
     serializer_class = QuestionSerializer
@@ -22,13 +24,9 @@ class AnswerView(views.APIView):
         question = get_object_or_404(Question, pk=serializer.validated_data["question"])
         answer = get_object_or_404(Option, pk=serializer.validated_data["option"])
 
-        if answer.question == question and answer.is_correct:
-            correct = True
-            self.request.user.rating += 5
-            self.request.user.save()
-
-        else:
-            correct = False
+        correct = check_answer(question, answer, self.request.user)
+        rating_change = "+5" if correct else "0"
+        info = question.correct_info if correct else question.incorrect_info
 
         next_question = None
         if Question.objects.filter(pk=serializer.validated_data["question"]+1):
@@ -38,6 +36,8 @@ class AnswerView(views.APIView):
 
         resp = {
             "correct": correct,
+            "rating_change": rating_change,
+            "info": info,
             "next_question": next_question
         }
 

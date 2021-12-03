@@ -31,6 +31,16 @@ class Question(models.Model):
         verbose_name="викторина"
     )
 
+    correct_info = models.TextField(
+        blank=True,
+        verbose_name="информация при правильном ответе"
+    )
+
+    incorrect_info = models.TextField(
+        blank=True,
+        verbose_name="информация при неправильном ответе"
+    )
+
     def __str__(self) -> str:
         return f"{self.text}"
 
