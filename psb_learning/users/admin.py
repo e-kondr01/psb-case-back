@@ -9,7 +9,7 @@ class UserAdmin(DjangoUserAdmin):
 
     fieldsets = (
         (None, {'fields': (
-            'email', 'password',
+            'email', 'password', "rating"
         )}),
         ('Permissions', {'fields': ('is_active', 'is_staff',
                                     'is_superuser', 'groups',
