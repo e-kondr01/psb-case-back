@@ -1,8 +1,6 @@
 name: Linters and tests
 on:
   push:
-    branches:
-      - master
 
 jobs:
   linters_and_tests:
