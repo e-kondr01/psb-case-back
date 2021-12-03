@@ -9,7 +9,9 @@ Backend на Python Django Rest Framework, деплой с помощью Docker
 Фронт на React.js
 ## Демо
 Демо доступно по адресу: https://e-kondr01.ru
+
 Реквизиты тестового пользователя: email: worker@test.com, пароль: TESTtest123
+
 Реквизиты тестового руководителя: email: supervisor@test.com, пароль: TESTtest123
 ## Запуск проекта
 Для запуска проекта нужно установить docker и docker-compose,
