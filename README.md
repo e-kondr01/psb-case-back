@@ -10,7 +10,7 @@
 других проектов в системе.
 ## Основной стек технологий
 Backend на Python Django Rest Framework, деплой с помощью Docker, Nginx, Gunicorn.
-Фронт на React.js
+Фронт на React.js (другой репозиторий - https://github.com/bgdshka/PSB-case-2021)
 ## Демо
 Демо доступно по адресу: https://e-kondr01.ru
 
