@@ -64,8 +64,7 @@ class User(AbstractUser):
         else:
             return ""
 
-    def increase_rating(self) -> None:
+    def increase_rating(self, rating_change: int) -> None:
         """Увеличивает рейтинг пользователя"""
-        RATING_INCREASE = 5
-        self.rating += RATING_INCREASE
+        self.rating += rating_change
         self.save()
