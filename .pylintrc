@@ -12,4 +12,4 @@ disable=missing-docstring,no-else-return,abstract-method
 max-parents=13
 
 [TYPECHECK]
-generated-members=REQUEST,"[a-zA-Z]+_set{1,2}",save,delete
+generated-members=REQUEST,"[a-zA-Z]+_set{1,2}",save,delete,goals
